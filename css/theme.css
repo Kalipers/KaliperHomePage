@@ -1,0 +1,78 @@
+/* ============================================================
+   KALIPER — baked theme defaults
+   The prototype applied these at runtime via its "Tweaks" panel
+   (window tweak defaults). For the production site we bake the
+   chosen defaults in directly:
+     theme: cool · ctaColor: #1B1D21 · overlay: .56
+     grid: on · displayFont: Hanken Grotesk · cardWidth: 360px
+   ============================================================ */
+
+:root{
+  --cta-bg:#1B1D21;
+  --cta-bg-hover:#0C0D0F;
+  --cta-fg:#F6F2EA;
+  --overlay:.56;
+  --grid-show:block;
+  --card-w:360px;
+  --font-display:'Hanken Grotesk', system-ui, -apple-system, sans-serif;
+}
+
+/* Cool background remap (the design's default theme) */
+body.cool{
+  --cream:#F5F6F8; --cream-deep:#ECEEF1; --cream-sunken:#E4E7EB;
+  --surface:#FFFFFF; --surface-2:#FFFFFF;
+  --fg-2c:#3A3D45; --fg-3c:#5C5F68; --fg-4c:#868A93;
+  --line:#E7E9ED; --line-2:#D2D5DB; --line-strong:#AEB2BA;
+}
+
+/* ------------------------------------------------------------
+   Responsive guards.
+   The design used a few fixed pixel widths inline (hero headline,
+   sub copy, the "answer" heading). They look right on desktop but
+   would overflow on phones — relax them to fluid widths on small
+   screens while keeping the desktop sizing intact.
+   ------------------------------------------------------------ */
+@media (max-width:920px){
+  .hero h1{font-size:clamp(40px,9vw,75px)!important;width:auto!important;max-width:100%!important}
+  .hero-sub p{width:auto!important;max-width:100%!important}
+  .hero-sub p .lead{font-size:clamp(18px,4.6vw,30px)!important}
+}
+@media (max-width:760px){
+  .val-lead h2{width:auto!important;max-width:100%!important}
+  .eyebrow{font-size:clamp(20px,6vw,44px)!important}
+  .pb-tag{font-size:clamp(20px,6vw,44px)!important}
+}
+
+/* No-JS fallback: reveal everything if JS doesn't run */
+.no-js [data-reveal]{opacity:1!important;transform:none!important}
+
+/* ------------------------------------------------------------
+   Agent avatar — the prototype made this an upload button; on a
+   real marketing site it's just a static photo. Recreate the
+   button's circular frame on a plain wrapper.
+   ------------------------------------------------------------ */
+.agent-av .agent-photo-wrap{
+  position:absolute;inset:0;border-radius:50%;overflow:hidden;
+  background:var(--char-850);box-shadow:inset 0 0 0 1px var(--line-2);display:block;
+}
+.agent-av .agent-photo{width:100%;height:100%;object-fit:cover;object-position:center 32%;display:block}
+
+/* ------------------------------------------------------------
+   Overlay visibility. .scrim / .agent-scrim carry author display
+   rules (grid/flex) that beat the UA [hidden] rule, so make the
+   hidden state explicit.
+   ------------------------------------------------------------ */
+.scrim[hidden],
+.agent-scrim[hidden]{display:none!important}
+
+/* ------------------------------------------------------------
+   Demo form: honeypot + form-level error
+   ------------------------------------------------------------ */
+.modal form .hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;opacity:0;pointer-events:none}
+.modal form .form-err{
+  font-family:var(--font-mono);font-size:11.5px;line-height:1.4;
+  color:var(--status-failed);background:var(--status-failed-bg);
+  border:1px solid rgba(142,27,22,.2);border-radius:var(--radius-sm);
+  padding:9px 11px;margin-top:2px;
+}
+.modal form .form-err[hidden]{display:none!important}

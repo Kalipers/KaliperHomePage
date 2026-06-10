@@ -1,0 +1,239 @@
+/* ============================================================
+   KALIPER DESIGN SYSTEM — Foundations
+   colors_and_type.css
+   Color + Type tokens (base + semantic).
+   Brand: crimson energy on engineered charcoal-black.
+   ------------------------------------------------------------
+   Palette sampled from the real brand logos:
+     Charcoal Black  #1B1D21   (base / ink)
+     Kaliper Red     #ED1B1B   (primary accent — "the agent at work")
+     near-white      #F5F6F8   (light canvas)
+   Fonts via Google Fonts (see fonts note in README):
+     Display  -> Hanken Grotesk (geometric grotesque ~ the "kaliper." wordmark)
+     Body     -> Inter
+     Mono     -> JetBrains Mono
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  /* ---------- BRAND CORE PALETTE ---------- */
+  --midnight:        #1B1D21; /* Charcoal Black — base trust/stability (var name kept for compat) */
+  --charcoal:        #26282E; /* Elevated charcoal — secondary dark layouts */
+  --light-relief:    #F5F6F8; /* Light canvas */
+
+  --caliper-blue:    #ED1B1B; /* PRIMARY ACCENT — Kaliper Red — "agent at work" (var name kept for compat) */
+  --resolution-teal: #C00909; /* Deep red — secondary / hover / pressed */
+  --critical-amber:  #F59E0B; /* Exception surfaced / attention */
+
+  --kaliper-red:     #ED1B1B; /* canonical alias */
+  --red-bright:      #FB2424; /* hot highlight */
+  --red-deep:        #C00909; /* pressed / gradient end */
+  --ink:             #1B1D21;
+
+  /* ---------- EXTENDED NEUTRAL (CHARCOAL) SCALE ----------
+     Neutral, very slightly cool greys derived from the charcoal ink. */
+  --navy-950: #0E0F11;
+  --navy-900: #1B1D21; /* = ink */
+  --navy-800: #26282E;
+  --navy-700: #303239;
+  --navy-600: #44474F;
+  --navy-500: #5C5F68;
+  --slate-500: #6B6F78;
+  --slate-400: #868A93;
+  --slate-300: #AEB2BA;
+  --slate-200: #D2D5DB;
+  --slate-100: #E7E9ED;
+  --slate-50:  #F5F6F8; /* = light canvas */
+  --white:     #FFFFFF;
+
+  /* ---------- TINTS (for fills / hover washes) ---------- */
+  --caliper-blue-12: rgba(237, 27, 27, 0.10);
+  --caliper-blue-20: rgba(237, 27, 27, 0.18);
+  --resolution-teal-12: rgba(192, 9, 9, 0.10);
+  --amber-12: rgba(245, 158, 11, 0.12);
+  --amber-20: rgba(245, 158, 11, 0.20);
+  --red-10: rgba(237, 27, 27, 0.10);
+  --red-16: rgba(237, 27, 27, 0.16);
+
+  /* ---------- SEMANTIC STATUS ---------- */
+  --status-resolved:  #1F9D72; /* on-track / resolved green */
+  --status-resolved-bg: rgba(31, 157, 114, 0.12);
+  --status-active:    #ED1B1B; /* in-progress — the agent is working (brand red) */
+  --status-active-bg: rgba(237, 27, 27, 0.10);
+  --status-exception: #F59E0B; /* exception (amber) */
+  --status-exception-bg: rgba(245, 158, 11, 0.14);
+  --status-failed:    #8E1B16; /* OTD failure / blocked — deep, serious maroon */
+  --status-failed-bg: rgba(142, 27, 22, 0.10);
+
+  /* ---------- SEMANTIC FOREGROUND (on LIGHT) ---------- */
+  --fg-1: #1B1D21; /* primary text */
+  --fg-2: #3A3D45; /* secondary text */
+  --fg-3: #5C5F68; /* muted / metadata */
+  --fg-4: #868A93; /* faint / placeholder */
+
+  /* ---------- SEMANTIC FOREGROUND (on DARK) ---------- */
+  --fg-on-dark-1: #F5F6F8; /* primary text on charcoal */
+  --fg-on-dark-2: #AEB2BA; /* secondary text on charcoal */
+  --fg-on-dark-3: #868A93; /* muted on charcoal */
+
+  /* ---------- SEMANTIC BACKGROUNDS ---------- */
+  --bg-canvas:    #F5F6F8; /* page canvas (light) */
+  --bg-surface:   #FFFFFF; /* card / panel */
+  --bg-sunken:    #EDEFF2; /* inset wells */
+  --bg-canvas-dark:  #1B1D21; /* dark page canvas */
+  --bg-surface-dark: #26282E; /* dark card */
+  --bg-elevated-dark: #303239; /* dark elevated panel */
+
+  /* ---------- BORDERS / LINES ---------- */
+  --border-1: #E7E9ED; /* hairline on light */
+  --border-2: #D2D5DB; /* standard border on light */
+  --border-strong: #AEB2BA;
+  --border-dark-1: rgba(255, 255, 255, 0.08); /* hairline on charcoal */
+  --border-dark-2: rgba(255, 255, 255, 0.14);
+  --grid-line: rgba(27, 29, 33, 0.06); /* engineering grid */
+  --grid-line-dark: rgba(237, 27, 27, 0.07);
+
+  /* ---------- ACCENT GLOW (the "agent at work") ---------- */
+  --glow-caliper: 0 0 0 1px rgba(237,27,27,0.30), 0 0 16px rgba(237,27,27,0.22);
+  --glow-amber:   0 0 0 1px rgba(245,158,11,0.40), 0 0 16px rgba(245,158,11,0.25);
+
+  /* ---------- ELEVATION / SHADOWS ----------
+     Neutral, low-spread. Engineered, not soft/fluffy. */
+  --shadow-xs: 0 1px 2px rgba(20,22,26,0.06);
+  --shadow-sm: 0 1px 3px rgba(20,22,26,0.09), 0 1px 2px rgba(20,22,26,0.05);
+  --shadow-md: 0 4px 12px rgba(20,22,26,0.09), 0 2px 4px rgba(20,22,26,0.05);
+  --shadow-lg: 0 12px 32px rgba(20,22,26,0.13), 0 4px 8px rgba(20,22,26,0.06);
+  --shadow-dark: 0 16px 40px rgba(0,0,0,0.48);
+
+  /* ---------- RADII ----------
+     Tight, hardware-precise. Nothing pill-soft except status chips. */
+  --radius-xs: 3px;
+  --radius-sm: 5px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-pill: 999px;
+
+  /* ---------- SPACING (4px base grid) ---------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+
+  /* ---------- MOTION ---------- */
+  --ease-standard: cubic-bezier(0.2, 0.8, 0.2, 1); /* @kind other */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1); /* @kind other */
+  --dur-fast: 120ms; /* @kind other */
+  --dur-med: 220ms; /* @kind other */
+  --dur-slow: 420ms; /* @kind other */
+
+  /* ---------- TYPE FAMILIES ---------- */
+  --font-display: 'Hanken Grotesk', system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', ui-monospace, monospace;
+
+  /* ---------- TYPE SCALE (px / line-height / tracking) ---------- */
+  --text-display-size: 64px;  --text-display-lh: 1.02; --text-display-ls: -0.03em;
+  --text-h1-size: 44px;       --text-h1-lh: 1.06;      --text-h1-ls: -0.025em;
+  --text-h2-size: 32px;       --text-h2-lh: 1.12;      --text-h2-ls: -0.02em;
+  --text-h3-size: 24px;       --text-h3-lh: 1.2;       --text-h3-ls: -0.015em;
+  --text-h4-size: 19px;       --text-h4-lh: 1.3;       --text-h4-ls: -0.01em;
+  --text-body-lg-size: 18px;  --text-body-lg-lh: 1.6;
+  --text-body-size: 15px;     --text-body-lh: 1.6;
+  --text-small-size: 13px;    --text-small-lh: 1.5;
+  --text-label-size: 11px;    --text-label-lh: 1.2;    --text-label-ls: 0.12em;
+  --text-mono-size: 12px;     --text-mono-lh: 1.45;    --text-mono-ls: 0.01em;
+}
+
+/* ============================================================
+   SEMANTIC TYPE CLASSES
+   ============================================================ */
+.k-display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--text-display-size);
+  line-height: var(--text-display-lh);
+  letter-spacing: var(--text-display-ls);
+  color: var(--fg-1);
+}
+.k-h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-h1-size);
+  line-height: var(--text-h1-lh);
+  letter-spacing: var(--text-h1-ls);
+  color: var(--fg-1);
+}
+.k-h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-h2-size);
+  line-height: var(--text-h2-lh);
+  letter-spacing: var(--text-h2-ls);
+  color: var(--fg-1);
+}
+.k-h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-h3-size);
+  line-height: var(--text-h3-lh);
+  letter-spacing: var(--text-h3-ls);
+  color: var(--fg-1);
+}
+.k-h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-h4-size);
+  line-height: var(--text-h4-lh);
+  letter-spacing: var(--text-h4-ls);
+  color: var(--fg-1);
+}
+.k-body-lg {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--text-body-lg-size);
+  line-height: var(--text-body-lg-lh);
+  color: var(--fg-2);
+}
+.k-body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--text-body-size);
+  line-height: var(--text-body-lh);
+  color: var(--fg-2);
+}
+.k-small {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--text-small-size);
+  line-height: var(--text-small-lh);
+  color: var(--fg-3);
+}
+/* Technical eyebrow / kicker — uppercase, tracked, mono-adjacent */
+.k-label {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: var(--text-label-size);
+  line-height: var(--text-label-lh);
+  letter-spacing: var(--text-label-ls);
+  text-transform: uppercase;
+  color: var(--fg-3);
+}
+/* Monospace data / metrics / PO line callouts */
+.k-mono {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: var(--text-mono-size);
+  line-height: var(--text-mono-lh);
+  letter-spacing: var(--text-mono-ls);
+  color: var(--fg-2);
+}
